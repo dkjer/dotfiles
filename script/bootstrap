@@ -5,5 +5,5 @@ sudo apt update
 sudo apt install -y stow
 sudo chsh -s /bin/zsh coder
 
-rm -f ~/.bashrc
+rm -f ~/.bashrc ~/.gitconfig
 stow -d $(dirname "$SCRIPT_DIR") -t ~/ .

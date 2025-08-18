@@ -1,0 +1,49 @@
+[user]
+	email = dkjer@roblox.com
+	name = Don Kjer
+[credential "https://github.rbx.com"]
+	helper = !/usr/bin/gh auth git-credential
+
+[includeIf "gitdir:~/code/roblox/"]
+	path = ~/code/roblox/.gitconfig
+
+[merge]
+	tool = vimdiff
+[push]
+	default = current
+[alias]
+	co = checkout
+	showtrackedignored = ls-files -i --exclude-standard
+	lgb = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold cyan)<%an>%Creset%n' --abbrev-commit --date=relative --branches
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold cyan)<%an>%Creset%n' --abbrev-commit --date=relative
+[filter "media"]
+	clean = git media clean %f
+	smudge = git media smudge %f
+	required = true
+[core]
+	symlinks = true
+#	excludesfile = /Users/dkjer/.gitignore_global
+	autocrlf = input
+	ignorecase = True
+[fetch]
+	prune = true
+[log]
+	decorate = auto
+[difftool]
+	prompt = false
+#[diff]
+#	external = /Users/dkjer/bin/git-diff-cmd.sh
+[filter "lfs"]
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+#[url "git@github.com:"]
+#	insteadOf = https://github.com/
+#[url "git@github.rbx.com:"]
+#	insteadOf = https://github.rbx.com/
+[url "https://github.rbx.com/"]
+	insteadOf = "git@github.rbx.com:"
+[color]
+	ui = auto
+
