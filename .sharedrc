@@ -27,13 +27,6 @@ export NVM_DIR="$HOME/.nvm"
 umask 002
 ulimit -n 1024
 
-# 🚦 🚥 👻 🎃 🎄 🎅 🐒 🙈 🙉 🙊 ✨ ⭐ 🌟 💫 🚀 🌜 🌛 🌙 🌝 🌞 🚧 🚨 🚩 ⏳ ☕ ⚡ ⛄ ⛅ 🌈
-# 🌵 🍀 🍄 🍎 🍏 🍒 🍓 🍗 🍣 🍥 🍭 🍯 🍺 🎁 🎈 🎉 🎊 🎣 🎩 🎮 🎯 🎲 🏠 🏢 🏭 🏰 🐉 🐊 🐓
-# 🎠 🐌 🐍 🐙 🐞 🐡 🐢 🐧 🐬 🐱 🐈 🐇 🐁 🐳 🐋 🐲 🐸 🐶 🐵 🐺 🐼 🐾 👣 👜 👹 👺 👽 👾 👿
-# 👑 💎 💡 💣 💥 💩 📌 📦 🔋 🔑 🔒 🔓 🔐 🔔 🔗 🔍 🔎 🔥 🔦 🔧 🔨 🔩 🔫 🔮 🔱 🗿 💀 🌎 🌍
-# 🚂 🚰 🌐
-export OS_ICON="💫"
-
 # set PATH so it includes user's private bin if it exists
 if [ -d ~/bin ] ; then
     PATH=~/bin:"${PATH}"
@@ -103,3 +96,38 @@ LC_ALL=C
 LANG=C
 
 export KUBECONFIG=~/.kube/rksconfig
+
+# 🚦 🚥 👻 🎃 🎄 🎅 🐒 🙈 🙉 🙊 ✨ ⭐ 🌟 💫 🚀 🌜 🌛 🌙 🌝 🌞 🚧 🚨 🚩 ⏳ ☕ ⚡ ⛄ ⛅ 🌈
+# 🌵 🍀 🍄 🍎 🍏 🍒 🍓 🍗 🍣 🍥 🍭 🍯 🍺 🎁 🎈 🎉 🎊 🎣 🎩 🎮 🎯 🎲 🏠 🏢 🏭 🏰 🐉 🐊 🐓
+# 🎠 🐌 🐍 🐙 🐞 🐡 🐢 🐧 🐬 🐱 🐈 🐇 🐁 🐳 🐋 🐲 🐸 🐶 🐵 🐺 🐼 🐾 👣 👜 👹 👺 👽 👾 👿
+# 👑 💎 💡 💣 💥 💩 📌 📦 🔋 🔑 🔒 🔓 🔐 🔔 🔗 🔍 🔎 🔥 🔦 🔧 🔨 🔩 🔫 🔮 🔱 🗿 💀 🌎 🌍
+# 🚂 🚰 🌐
+
+OS=$(uname)
+
+case "$OS" in
+    "Darwin")
+        OS_ICON=" "
+        ;;
+    "Linux")
+        OS_ICON=""
+        if [ -f "/etc/os-release" ]; then
+            if grep -q "ID=ubuntu" /etc/os-release; then
+                OS_ICON=""
+            elif grep -q "ID=debian" /etc/os-release; then
+                OS_ICON=""
+            fi
+        fi
+        ;;
+    *)
+        OS_ICON="👾"
+        ;;
+esac
+export OS_ICON
+
+# Add this to ~/.localrc to override
+#export OS_ICON="💫"
+if [ -f ~/.localrc ]; then
+  source ~/.localrc
+fi
+
