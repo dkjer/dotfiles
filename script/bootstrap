@@ -1,9 +1,17 @@
 #!/bin/bash
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+export DEBIAN_FRONTEND=noninteractive
 
-sudo apt update
-sudo apt install -y stow
+sudo apt update -y && sudo apt install -y gpg sudo wget curl stow
 sudo chsh -s /bin/zsh coder
 
-rm -f ~/.bashrc ~/.gitconfig
+rm -f ~/.bashrc ~/.gitconfig ~/.dotfiles
 stow -d $(dirname "$SCRIPT_DIR") -t ~/ .
+ln -s $(dirname "$SCRIPT_DIR") ~/.dotfiles
+
+# install mise
+sudo install -dm 755 /etc/apt/keyrings
+wget -qO - https://mise.jdx.dev/gpg-key.pub | gpg --dearmor | sudo tee /etc/apt/keyrings/mise-archive-keyring.gpg 1> /dev/null
+echo "deb [signed-by=/etc/apt/keyrings/mise-archive-keyring.gpg arch=amd64] https://mise.jdx.dev/deb stable main" | sudo tee /etc/apt/sources.list.d/mise.list
+sudo apt update -y
+sudo apt install -y mise
