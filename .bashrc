@@ -121,3 +121,8 @@ if [ -f ~/.sharedrc ]; then
   source ~/.sharedrc
 fi
 export AD_USERNAME=dkjer
+
+# Activate mise
+if type "mise" >/dev/null; then
+  eval "$(mise activate bash)"
+fi

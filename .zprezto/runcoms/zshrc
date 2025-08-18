@@ -96,3 +96,7 @@ fi
 # Hook direnv
 eval "$(direnv hook zsh)"
 
+# Activate mise
+if type "mise" >/dev/null; then
+  eval "$(mise activate zsh)"
+fi
