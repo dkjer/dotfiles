@@ -95,8 +95,6 @@ export GONOSUMDB=github.rbx.com
 LC_ALL=C
 LANG=C
 
-export KUBECONFIG=~/.kube/rksconfig
-
 # 🚦 🚥 👻 🎃 🎄 🎅 🐒 🙈 🙉 🙊 ✨ ⭐ 🌟 💫 🚀 🌜 🌛 🌙 🌝 🌞 🚧 🚨 🚩 ⏳ ☕ ⚡ ⛄ ⛅ 🌈
 # 🌵 🍀 🍄 🍎 🍏 🍒 🍓 🍗 🍣 🍥 🍭 🍯 🍺 🎁 🎈 🎉 🎊 🎣 🎩 🎮 🎯 🎲 🏠 🏢 🏭 🏰 🐉 🐊 🐓
 # 🎠 🐌 🐍 🐙 🐞 🐡 🐢 🐧 🐬 🐱 🐈 🐇 🐁 🐳 🐋 🐲 🐸 🐶 🐵 🐺 🐼 🐾 👣 👜 👹 👺 👽 👾 👿
