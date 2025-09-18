@@ -42,8 +42,8 @@
 #	insteadOf = https://github.com/
 #[url "git@github.rbx.com:"]
 #	insteadOf = https://github.rbx.com/
-[url "https://github.rbx.com/"]
-	insteadOf = "git@github.rbx.com:"
+#[url "https://github.rbx.com/"]
+#	insteadOf = "git@github.rbx.com:"
 [color]
 	ui = auto
 
