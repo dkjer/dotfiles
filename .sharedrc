@@ -37,6 +37,8 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
+export PATH="/home/coder/game-engine/Tools/Util:${PATH}"
+
 # do the same with MANPATH
 if [ -d ~/man ]; then
     MANPATH=~/man:"${MANPATH}"
