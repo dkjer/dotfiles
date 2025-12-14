@@ -94,9 +94,11 @@ if [ -e ~/.kube/completion.zsh.inc ]; then
 fi
 
 # Hook direnv
-eval "$(direnv hook zsh)"
+if type "direnv" >/dev/null 2>/dev/null; then
+  eval "$(direnv hook zsh)"
+fi
 
 # Activate mise
-if type "mise" >/dev/null; then
+if type "mise" >/dev/null 2>/dev/null; then
   eval "$(mise activate zsh)"
 fi

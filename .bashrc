@@ -123,6 +123,6 @@ fi
 export AD_USERNAME=dkjer
 
 # Activate mise
-if type "mise" >/dev/null; then
+if type "mise" >/dev/null 2>/dev/null; then
   eval "$(mise activate bash)"
 fi
