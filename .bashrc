@@ -8,6 +8,9 @@ case $- in
       *) return;;
 esac
 
+# Add ~/bin to PATH first (for git/gh write protection wrappers)
+export PATH="$HOME/bin:$PATH"
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth

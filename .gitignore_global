@@ -1,3 +1,11 @@
 *.zwc
 *.zwc.old
 *.swp
+.claude/
+CLAUDE.md
+docs/arm64*md
+Tools/arm64/
+Client/RCCService/Docker/rccservice_staging/
+Client/RCCService/Docker/rccservice_symbols/
+Client/RCCService/Docker/patch_cache/
+local-ci.sh

@@ -96,10 +96,10 @@ export GONOPROXY=none
 export GONOSUMDB=github.rbx.com
 
 # Configure locale
-#LC_ALL=en_US.UTF-8
-#LANG=en_US.UTF-8
-LC_ALL=C
-LANG=C
+LC_ALL=en_US.UTF-8
+LANG=en_US.UTF-8
+#LC_ALL=C
+#LANG=C
 
 # 🚦 🚥 👻 🎃 🎄 🎅 🐒 🙈 🙉 🙊 ✨ ⭐ 🌟 💫 🚀 🌜 🌛 🌙 🌝 🌞 🚧 🚨 🚩 ⏳ ☕ ⚡ ⛄ ⛅ 🌈
 # 🌵 🍀 🍄 🍎 🍏 🍒 🍓 🍗 🍣 🍥 🍭 🍯 🍺 🎁 🎈 🎉 🎊 🎣 🎩 🎮 🎯 🎲 🏠 🏢 🏭 🏰 🐉 🐊 🐓

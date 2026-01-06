@@ -47,3 +47,7 @@
 [color]
 	ui = auto
 
+[url "git@github.rbx.com:"]
+       insteadOf = https://github.rbx.com/
+#[http]
+#       sslCAInfo = /home/coder/.mitmproxy/ca-bundle-with-mitmproxy.crt
