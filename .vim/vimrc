@@ -153,11 +153,11 @@ nnoremap <C-l> <C-w>l
 
 " Fugitive Conflict Resolution
 command! Diff Gvdiff
-nnoremap <leader>gd :Gvdiff<CR>
+nnoremap <leader>gd :Gvdiff<CR><C-w>l
 nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
 
-" Diff mode navigation (]j next, [j prev)
-autocmd OptionSet diff if &diff | nnoremap <buffer> ]j ]c | nnoremap <buffer> [j [c | endif
-autocmd BufEnter * if &diff | nnoremap <buffer> ]j ]c | nnoremap <buffer> [j [c | endif
+" Diff mode navigation (]j next, [j or ]k prev)
+autocmd OptionSet diff if &diff | nnoremap <buffer> ]j ]c | nnoremap <buffer> [j [c | nnoremap <buffer> ]k [c | endif
+autocmd BufEnter * if &diff | nnoremap <buffer> ]j ]c | nnoremap <buffer> [j [c | nnoremap <buffer> ]k [c | endif
 
