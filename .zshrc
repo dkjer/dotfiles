@@ -1,1 +1,108 @@
-.zprezto/runcoms/zshrc
+## Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+export SHELL=$(which zsh)
+
+# Add ~/bin to PATH first (for git/gh write protection wrappers)
+export PATH="$HOME/bin:$PATH"
+
+#
+# Executes commands at the start of an interactive session.
+#
+# Authors:
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#
+
+#export ITERM_ENABLE_SHELL_INTEGRATION_WITH_TMUX=YES
+
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+expand-or-complete-with-dots() {      # This bunch of code displays red dots when autocompleting
+  echo -n "\e[31m......\e[0m"         # a command with the tab key, "Oh-my-zsh"-style.
+  zle expand-or-complete
+  zle redisplay
+}
+zle -N expand-or-complete-with-dots
+bindkey "^I" expand-or-complete-with-dots
+
+#disable auto correct
+unsetopt correct
+#disable verify
+setopt rm_star_silent clobber
+unalias rm &>/dev/null
+unalias cp &>/dev/null
+unalias mv &>/dev/null
+
+setopt HIST_IGNORE_SPACE
+
+if [ -f ~/.sharedrc ]; then
+  source ~/.sharedrc
+fi
+
+if [ -f ~/.zsh_aliases ]; then
+    . ~/.zsh_aliases
+fi
+
+# 1Password shell completion
+if type op >/dev/null; then
+    eval "$(op completion zsh)"; compdef _op op
+fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+function brew_find_pkg {
+    file_to_search="$@"
+
+    for package in $(brew list); do
+        brew ls $package | grep -E -q "/${file_to_search}$"
+        if [ $? -eq 0 ]; then
+            echo $package
+            break
+        fi
+    done
+}
+
+# changes hex 0x15 to delete everything to the left of the cursor,
+# rather than the whole line
+bindkey "^U" backward-kill-line
+
+# binds hex 0x18 0x7f with deleting everything to the left of the cursor
+bindkey "^X\\x7f" backward-kill-line
+
+# adds redo
+bindkey "^X^_" redo
+
+# To customize prompt, run `p10k configure` to override internal config.
+if [[ -f "$HOME/.p10k.zsh" ]]; then
+  source "$HOME/.p10k.zsh"
+elif [[ -s "${ZDOTDIR:-$HOME}/.zprezto/p10k.zsh" ]]; then
+  # Fall back to internal p10k configuration.
+  source "${ZDOTDIR:-$HOME}/.zprezto/p10k.zsh"
+fi
+
+export POWERLEVEL9K_INSTANT_PROMPT=quiet
+
+if [ -e ~/.nix-profile/etc/profile.d/nix.sh ]; then . ~/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+if [ -e ~/.kube/completion.zsh.inc ]; then
+  . ~/.kube/completion.zsh.inc
+  setopt completealiases
+fi
+
+# Hook direnv
+if type "direnv" >/dev/null 2>/dev/null; then
+  eval "$(direnv hook zsh)"
+fi
+
+# Activate mise
+if type "mise" >/dev/null 2>/dev/null; then
+  eval "$(mise activate zsh)"
+fi
+export PATH=~/.npm-global/bin:$PATH

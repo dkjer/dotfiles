@@ -8,6 +8,11 @@ case $- in
       *) return;;
 esac
 
+# Keep SSH agent socket symlink up to date (Coder doesn't run ~/.ssh/rc)
+if [ -S "$SSH_AUTH_SOCK" ] && [ "$SSH_AUTH_SOCK" != "$HOME/.ssh/ssh_auth_sock" ]; then
+    ln -sf "$SSH_AUTH_SOCK" "$HOME/.ssh/ssh_auth_sock"
+fi
+
 # Add ~/bin to PATH first (for git/gh write protection wrappers)
 export PATH="$HOME/bin:$PATH"
 
@@ -128,4 +133,8 @@ export AD_USERNAME=dkjer
 # Activate mise
 if type "mise" >/dev/null 2>/dev/null; then
   eval "$(mise activate bash)"
+fi
+
+if [ -f ~/.cargo/env ]; then
+  source ~/.cargo/env
 fi
